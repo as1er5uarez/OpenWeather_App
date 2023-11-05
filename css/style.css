@@ -1,0 +1,28 @@
+.card{
+    background-color: #4e5302;
+    color: #2b2a33;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);;
+}
+
+body{
+    background: linear-gradient(#295c8a, #032441);
+    font-family: Segoe UI, Segoe WP, Arial, Sans-Serif;
+    position: relative;
+}
+
+.navbar{
+    background-image: url(../img/Cloudy\ 1.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #f5f6f7;
+}
+
+.container{
+    overflow-y: scroll;
+    height: 200px;
+    color:aliceblue;
+}
+
+#icon{
+    font-size: 100px;
+}

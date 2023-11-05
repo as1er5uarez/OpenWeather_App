@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Tiempo - OpenWeather</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://openweathermap.org/img/wn/10d@2x.png">
+    <script async src="https://kit.fontawesome.com/f7eeccc7fa.js" crossorigin="anonymous"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+    <div class="navbar text-center">
+        <div class="container-fluid justify-content-center mt-3 mb-3">
+
+            <div class="container text-center form-group">
+                <h2 class="navbar-brand">Weather App</h2>
+                <div class="row align-items-center input-group mb-3">
+                    <input id="lugar" type="text" class="form-control" placeholder="Lugar" aria-label="Username" aria-describedby="basic-addon1">
+                    <button type="button" class="btn btn-primary btn-sm" id="obtenerUbicacion">
+                        <i class="fas fa-map-pin"></i>
+                    </button>
+                </div>
+                <div class="d-grid gap2 col-6 mx-auto">
+                    <button type="button" class="btn btn-warning btn-lg" id="buscarLugar">Buscar</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="row justify-content-center pt-5">
+        <div class="card text-center col-4 pt-5" style="width: 42rem;">
+            <div>
+                <h5 class="card-title m-0" id="ciudad">Ciudad</h5>
+                <h6 class="card-title m-0" id="pais">Pais</h6>
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <i id="icon" class=""></i>
+                        </div>
+                        <div class="col-4">
+                            <h2 class="card-text" id="temperature">15ºC</h2>
+                        </div>
+                    </div>
+                </div>
+                <h5 class="card-title m-0" id="description"></h5>
+                <div class="row justify-content-center">
+                    <h6 class="card-title col-4 mt-5" id="min"></h6>
+                    <h6 class="card-title col-4 mt-5" id="max"></h6>    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center pt-5 pb-5" style="width: 40rem; height: 42rem;">
+        <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example text-center"
+            tabindex="0">
+            <div id="scrollspyHeading1" class="pt-5 pb-5">
+                <div class="card text-center col-4 pt-5" style="width: 40em;" id="card-weather-1">
+                    <div>
+                        <h5 id="date">Fecha</h5>
+                        <div class="card-body">
+                            <div class="row justify-content-center">
+                                <div class="col-4">
+                                    <i id="icon" class=""></i>
+                                </div>
+                                <div class="col-4">
+                                    <h2 class="card-text" id="temperature">15ºC</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title m-0" id="description"></h5>
+                        <div class="row justify-content-center">
+                            <h6 class="card-title col-4 mt-5" id="min"></h6>
+                            <h6 class="card-title col-4 mt-5" id="max"></h6>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            <div id="scrollspyHeading2" class="pt-5 pb-5">
+                <div class="card text-center col-4 pt-5" style="width: 40rem;" id="card-weather-1">
+                    <div>
+                        <h5 id="date">Fecha</h5>
+                        <div class="card-body">
+                            <div class="row justify-content-center">
+                                <div class="col-4">
+                                    <i id="icon" class=""></i>
+                                </div>
+                                <div class="col-4">
+                                    <h2 class="card-text" id="temperature">15ºC</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title m-0" id="description"></h5>
+                        <div class="row justify-content-center">
+                            <h6 class="card-title col-4 mt-5" id="min"></h6>
+                            <h6 class="card-title col-4 mt-5" id="max"></h6>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="scrollspyHeading3" class="pt-5 pb-5">
+                <div class="card text-center col-4 pt-5" style="width: 40rem;" id="card-weather-1">
+                    <div>
+                        <h5 id="date">Fecha</h5>
+                        <div class="card-body">
+                            <div class="row justify-content-center">
+                                <div class="col-4">
+                                    <i id="icon" class=""></i>
+                                </div>
+                                <div class="col-4">
+                                    <h2 class="card-text" id="temperature">15ºC</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title m-0" id="description"></h5>
+                        <div class="row justify-content-center">
+                            <h6 class="card-title col-4 mt-5" id="min"></h6>
+                            <h6 class="card-title col-4 mt-5" id="max"></h6>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="scrollspyHeading4" class="pt-5 pb-5">
+                <div class="card text-center col-4 pt-5" style="width: 40rem;" id="card-weather-1">
+                    <div>
+                        <h5 id="date">Fecha</h5>
+                        <div class="card-body">
+                            <div class="row justify-content-center">
+                                <div class="col-4">
+                                    <i id="icon" class=""></i>
+                                </div>
+                                <div class="col-4">
+                                    <h2 class="card-text" id="temperature">15ºC</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title m-0" id="description"></h5>
+                        <div class="row justify-content-center">
+                            <h6 class="card-title col-4 mt-5" id="min"></h6>
+                            <h6 class="card-title col-4 mt-5" id="max"></h6>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script async src="js/copia-aplication.js"></script>
+
+</body>
+
+</html>
